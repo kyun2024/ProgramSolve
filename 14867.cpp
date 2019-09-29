@@ -21,43 +21,42 @@ int gcd(int a,int b){
 }
 
 int main(){
-    int a,b,x,y;                                //입력 값들 (a,b)->(x,y)
-    queue<abc> q;                               //queue 생성
-    vector<int> x0,xa,y0,yb;                    //(0,n),(a,n),(n,0),(n,b)
-    int mv,mx,my,tc;                                     //move value, move after value
-    cin >> a >> b >> x >> y;
-    int gcd_val = gcd(a,b);
-    if(0<x && x<a && 0<y && y<b){
+    int a,b,x,y;                                        //입력 값들 (a,b)->(x,y)
+    queue<abc> q;                                       //queue 생성
+    vector<int> x0,xa,y0,yb;                            //(0,n),(a,n),(n,0),(n,b)
+    int mv,mx,my,tc;                                    //move value, move after value
+    cin >> a >> b >> x >> y;                            //Input
+    int gcd_val = gcd(a,b);                             //GCD - 증명 필요
+    if(0<x && x<a && 0<y && y<b){                       //0<x<a and 0<y<b이면 역연산 존재 X
         cout << "-1" << endl;
         return 0;
     }
     
-    if(x%gcd_val != 0 || y%gcd_val != 0){
+    if(x%gcd_val != 0 || y%gcd_val != 0){               //만들려는 수가 gcd로 나누어 떨어지지 않으면 불가능-증명 필요
         cout << "-1" << endl;
         return 0;
     }
     
-    if(x==0 & y==0){
+    if(x==0 & y==0){                                    //예외처리 - 0,0이면 당연히 0번으로 만들 수 있음
         cout << "0" << endl;
         return 0;
     }
     
-    a = a/gcd_val;
+    a = a/gcd_val;                                      //저장공간 최적화
     b = b/gcd_val;
     x = x/gcd_val;
     y = y/gcd_val;
     
-    x0.resize(b+1,0);
+    x0.resize(b+1,0);                                   //벡터 초기화
     xa.resize(b+1,0);
     y0.resize(a+1,0);
     yb.resize(a+1,0);
 
-    x0[0]=y0[0]=-1;
+    x0[0]=y0[0]=-1;                                     //시작 위치 설정
 
-    q.push(abc({0,0,0}));
+    q.push(abc({0,0,0}));                               //BFS용 Q 시작 위치 설정
     while(!q.empty()){
         abc front = q.front();
-        //cout << front.x << " " << front.y << " " << front.c << endl;
         //1. Fill
         //Fill X
         if(front.y==0 && y0[a]==0){
@@ -147,28 +146,7 @@ int main(){
         }
         q.pop();
     }
-    /*
-    cout << "x0 : ";
-    for(auto val : x0){
-        cout << setw(3) << left << val;
-    }
-    cout << endl;
-    cout << "xa : ";
-    for(auto val : xa){
-        cout << setw(3) << left << val;
-    }
-    cout << endl;
-    cout << "y0 : ";
-    for(auto val : y0){
-        cout << setw(3) << left << val;
-    }
-    cout << endl;
-    cout << "yb : ";
-    for(auto val : yb){
-        cout << setw(3) << left << val;
-    }
-    cout << endl;
-    */
+    //출력
     if(x==a){
         cout << (xa[y]?xa[y]:-1) << endl;
     }
