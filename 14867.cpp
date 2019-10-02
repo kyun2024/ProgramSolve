@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <vector>
 #include <queue>
+#include <chrono>
 
 using namespace std;
 
@@ -25,7 +26,10 @@ int main(){
     queue<abc> q;                                       //queue 생성
     vector<int> x0,xa,y0,yb;                            //(0,n),(a,n),(n,0),(n,b)
     int mv,mx,my,tc;                                    //move value, move after value
+    chrono::system_clock clock;
+    chrono::time_point<chrono::system_clock> now;
     cin >> a >> b >> x >> y;                            //Input
+    now = clock.now();
     int gcd_val = gcd(a,b);                             //GCD - 증명 필요
     if(0<x && x<a && 0<y && y<b){                       //0<x<a and 0<y<b이면 역연산 존재 X
         cout << "-1" << endl;
@@ -159,6 +163,7 @@ int main(){
     else if(y==0){
         cout << (y0[x]?y0[x]:-1) << endl;
     }
+    cout << chrono::duration_cast<chrono::milliseconds>((clock.now()-now)).count() << "ms" << endl;
     
     return 0;
 }
