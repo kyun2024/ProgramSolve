@@ -33,7 +33,7 @@ int main(){
     qpath.push(path(0,0,0));
     while(!qpath.empty()){
         path cur = qpath.front();
-        cout << cur.x << " " << cur.y << " " << cur.c << endl;
+        //cout << cur.x << " " << cur.y << " " << cur.c << endl;
         if(cur.x == c-1 && cur.y == r-1)break;
         //Up
         if(cur.y > 0 && input[cur.y-1][cur.x]){
@@ -57,7 +57,7 @@ int main(){
         }
         qpath.pop();
     }
-    cout << qpath.front().c << endl;
+    cout << qpath.front().c+1 << endl;
 
     return 0;
 }
