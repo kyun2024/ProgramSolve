@@ -42,6 +42,6 @@ int main(){
     }
     dp[0][0]=1;
     q(n-1,m-1);
-    cout << dp[n-1][m-1] << endl;
+    cout << max(dp[n-1][m-1],0) << endl;
     return 0;
 }
