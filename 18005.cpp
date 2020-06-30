@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin >> n;
+    if(n%4==1||n%4==3)cout << 0 << endl;
+    else if(n%4==2)cout << 1 << endl;
+    else cout << 2 << endl; // n%4==0
+    return 0;
+}
