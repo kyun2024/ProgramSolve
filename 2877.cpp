@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+constexpr int lens[] = {-1, 0, 2, 6, 0xe, 0x1e, 0x3e, 0x7e, 0xfe, 0x1fe, 0x3fe, 0x7fe, 0xffe, 0x1ffe, 0x3ffe, 0x7ffe, 0xfffe, 0x1fffe, 0x3fffe, 0x7fffe, 0xffffe, 0x1ffffe, 0x3ffffe, 0x7ffffe, 0xfffffe, 0x1fffffe, 0x3fffffe, 0x7fffffe, 0xffffffe, 0x1ffffffe};
+
+int main(){
+    int n,i;
+    cin >> n;
+    n--;
+    for(i=29;i>=1;i--){
+        if(n>=lens[i]){
+            cout << ((((n-lens[i])*2/(lens[i]+2))%2==0)?'4':'7');
+        }
+    }
+    cout << endl;
+    return 0;
+}
