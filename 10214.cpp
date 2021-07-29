@@ -9,10 +9,11 @@ int main(){
     int y,g,ys,gs;
     while(T--){
         ys = gs = 0;
+        y = g = 0;
         for(i=0;i<9;i++){
             cin >> y >> g;
-            if(y>g)ys++;
-            if(y<g)gs++;
+            ys += y;
+            gs += g;
         }
         if(ys>gs)cout << "Yonsei" << endl;
         else if(ys<gs)cout << "Korea" << endl;
